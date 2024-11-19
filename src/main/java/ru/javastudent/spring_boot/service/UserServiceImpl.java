@@ -11,13 +11,13 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private UserDao userDao;
+
     @Autowired
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
-    UserDao userDao;
 
-    @Transactional
     @Override
     public List<User> allUsers() {
         return userDao.allUsers();
@@ -41,7 +41,6 @@ public class UserServiceImpl implements UserService {
         userDao.editUser(user);
     }
 
-    @Transactional
     @Override
     public User getUserById(Long id) {
         return userDao.getUserById(id);
